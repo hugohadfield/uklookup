@@ -31,7 +31,7 @@ def get_prefix_data(prefix: str) -> Dict[str, Tuple[int, int]]:
     filename = f"codepointopen/Data/CSV/{prefix.lower().strip()}.csv.gz"
     path = Path(filename)
     if not path.exists():
-        return {}
+        raise FileNotFoundError(f"No data found for prefix {prefix} at file {filename}")
     east_north = np.genfromtxt(filename, delimiter=",", skip_header=0, usecols=(2, 3), dtype=int)
     codes = np.genfromtxt(filename, delimiter=",", skip_header=0, usecols=(0), dtype=str)
     data = {code: (east, north) for code, (east, north) in zip(codes, east_north)}
