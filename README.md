@@ -76,3 +76,5 @@ This project uses data from the Code-Point Open dataset provided by Ordnance Sur
 
 ## Other Projects
 A much more comprehensive postcode lookup tool is available at [postcodes.io](https://postcodes.io/). This project is a simple alternative for basic postcode lookups in an offline setting.
+
+[pgeocodes](https://github.com/symerio/pgeocode) looks like a much more advanced, multi-country, higher detail version of this tool. So if you are looking for a high power tool in offline setting check that out.
