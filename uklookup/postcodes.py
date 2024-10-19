@@ -28,10 +28,13 @@ def get_prefix_data(prefix: str) -> Dict[str, Tuple[int, int]]:
     Load the file containing the postcodes starting with the given prefix and return the 
     eastings and northings as numpy array.
     """
-    filename = f"codepointopen/Data/CSV/{prefix.lower().strip()}.csv.gz"
+    current_file = Path(__file__).resolve()
+    current_dir = current_file.parent
+    # filename = f"codepointopen/Data/CSV/{prefix.lower().strip()}.csv.gz"
+    filename = current_dir / f"codepointopen/Data/CSV/{prefix.lower().strip()}.csv.gz"
     path = Path(filename)
     if not path.exists():
-        raise FileNotFoundError(f"No data found for prefix {prefix} at file {filename}")
+        raise FileNotFoundError(f"No data found for prefix {prefix} at file {path.absolute()}")
     east_north = np.genfromtxt(filename, delimiter=",", skip_header=0, usecols=(2, 3), dtype=int)
     codes = np.genfromtxt(filename, delimiter=",", skip_header=0, usecols=(0), dtype=str)
     data = {code: (east, north) for code, (east, north) in zip(codes, east_north)}
