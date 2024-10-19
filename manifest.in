@@ -1,0 +1,1 @@
+include uklookup/codepointopen/Data/CSV/*.csv.gz
