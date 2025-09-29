@@ -45,7 +45,7 @@ def lookup_postcode(postcode: str) -> Optional[Tuple[int, int]]:
     """
     Look up the easting and northing for a given postcode.
     """
-    prefix = clean_alpha(postcode.lower().split()[0])
+    prefix = clean_alpha(postcode.lower().split()[0])[0:2]
     data = get_prefix_data(prefix)
     if postcode in data:
         return data[postcode]
